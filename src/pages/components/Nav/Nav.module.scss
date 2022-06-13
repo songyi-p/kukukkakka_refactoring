@@ -22,6 +22,76 @@ $yellowColor: #ffcd32;
   }
 }
 
+@mixin headerMenuMedia {
+  @media (min-width: 769px) and (max-width: 1024px) {
+    font-size: 14px;
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    font-size: 13px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 11px;
+  }
+
+  @media (max-width: 420px) {
+    padding: 0 5px;
+  }
+}
+
+@mixin navListMedia {
+  @media (min-width: 1024px) {
+    display: flex;
+    justify-content: space-around;
+    gap: 50px;
+  }
+
+  @media (min-width: 768px) and (max-width: 1024px) {
+    gap: 20px;
+  }
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+@mixin menuIconMedia {
+  @media (min-width: 769px) {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 20px;
+    color: #707070;
+    font-size: 27px;
+  }
+}
+
+@mixin hiddenNavListMedia {
+  @media (min-width: 768px) {
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    width: 420px;
+  }
+
+  @media (max-width: 420px) {
+    width: 320px;
+  }
+}
+
+@mixin hiddenNavMenuMedia {
+  @media (min-width: 421px) and (max-width: 600px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 13px;
+  }
+}
+
 .allWrapper {
   display: flex;
   flex-direction: column;
@@ -53,22 +123,7 @@ $yellowColor: #ffcd32;
       color: $darkColor;
       border-right: 1px solid $darkColor;
       font-weight: 300;
-
-      @media (min-width: 769px) and (max-width: 1024px) {
-        font-size: 14px;
-      }
-
-      @media (min-width: 601px) and (max-width: 768px) {
-        font-size: 13px;
-      }
-
-      @media (max-width: 600px) {
-        font-size: 11px;
-      }
-
-      @media (max-width: 420px) {
-        padding: 0 5px;
-      }
+      @include headerMenuMedia;
 
       .pointColor {
         color: #46cfa7;
@@ -100,19 +155,7 @@ $yellowColor: #ffcd32;
     }
 
     .navList {
-      @media (min-width: 1024px) {
-        display: flex;
-        justify-content: space-around;
-        gap: 50px;
-      }
-
-      @media (min-width: 768px) and (max-width: 1024px) {
-        gap: 20px;
-      }
-
-      @media (max-width: 768px) {
-        display: none;
-      }
+      @include navListMedia;
 
       .navMenu {
         height: 30px;
@@ -145,15 +188,7 @@ $yellowColor: #ffcd32;
 }
 
 .menuIcon {
-  @media (min-width: 769px) {
-    display: none;
-  }
-
-  @media (max-width: 768px) {
-    margin-left: 20px;
-    color: #707070;
-    font-size: 27px;
-  }
+  @include menuIconMedia;
 }
 
 .cartCounterCss {
@@ -184,18 +219,7 @@ $yellowColor: #ffcd32;
   padding: 10px 0;
   animation-name: fadeIn;
   animation-duration: 1s;
-
-  @media (min-width: 768px) {
-    display: none;
-  }
-
-  @media (max-width: 600px) {
-    width: 420px;
-  }
-
-  @media (max-width: 420px) {
-    width: 320px;
-  }
+  @include hiddenNavListMedia;
 }
 
 .hiddenNavMenu {
@@ -205,13 +229,7 @@ $yellowColor: #ffcd32;
   font-size: 18px;
   font-weight: 400;
 
-  @media (min-width: 421px) and (max-width: 600px) {
-    font-size: 15px;
-  }
-
-  @media (max-width: 420px) {
-    font-size: 13px;
-  }
+  @include hiddenNavMenuMedia;
 
   &:hover {
     bottom: -14px;
