@@ -28,14 +28,14 @@ function Main() {
 
   //메인 리스트 카드 컴포넌트
   useEffect(() => {
-    fetch('/products')
+    fetch('http://localhost:8000/products')
       .then(res => res.json())
       .then(res => {
         setLists(res);
       });
   }, []);
 
-  const filtered_subscriptrion_list = lists.productList.filter(
+  const filtered_subscription_list = lists.productList.filter(
     list => list.id > 9 && list.id <= 11
   );
   const filtered_bouquet_list = lists.productList.filter(list => list.id <= 10);
@@ -70,27 +70,26 @@ function Main() {
             src="img/main_banner_3.jpg"
           />
         </div>
-      </div>
-
-      <div className={styles.turn_banner_btn_wrapper}>
-        <button
-          type="button"
-          className={styles.turnBannerBtn}
-          onClick={prevImg}
-        >
-          〈
-        </button>
-        <button type="button" className={styles.turnBannerCounter}>
-          {nowSlide + 1} / 3
-        </button>
-        <button
-          type="button"
-          className={styles.turnBannerBtn}
-          style={{ padding: '5px 5px 5px 13px' }}
-          onClick={nextImg}
-        >
-          〉
-        </button>
+        <div className={styles.turn_banner_btn_wrapper}>
+          <button
+            type="button"
+            className={styles.turnBannerBtn}
+            onClick={prevImg}
+          >
+            〈
+          </button>
+          <button type="button" className={styles.turnBannerCounter}>
+            {nowSlide + 1} / 3
+          </button>
+          <button
+            type="button"
+            className={styles.turnBannerBtn}
+            style={{ padding: '5px 5px 5px 13px' }}
+            onClick={nextImg}
+          >
+            〉
+          </button>
+        </div>
       </div>
 
       <article>
@@ -126,12 +125,14 @@ function Main() {
             </div>
           </section>
 
-          <MainListCard
-            key={filtered_subscriptrion_list.id}
-            lists={filtered_subscriptrion_list}
-            containerMargin="0"
-            hide="none"
-          />
+          <div className={styles.subscriptionCard}>
+            <MainListCard
+              key={filtered_subscription_list.id}
+              lists={filtered_subscription_list}
+              containerMargin="0"
+              hide="none"
+            />
+          </div>
         </section>
 
         <MainListCard

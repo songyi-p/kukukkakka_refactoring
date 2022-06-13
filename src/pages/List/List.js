@@ -16,7 +16,7 @@ function List() {
   const [showRecommend, setShowRecommend] = useState(false);
 
   useEffect(() => {
-    fetch(`/products`)
+    fetch(`http://localhost:8000/products`)
       .then(res => res.json())
       .then(res => {
         setLists(res);

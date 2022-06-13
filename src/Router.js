@@ -9,22 +9,25 @@ import Cart from './pages/Cart/Cart';
 import Nav from './pages/components/Nav/Nav';
 import Footer from './pages/components/Footer/Footer';
 import Test from './pages/Login/Test';
+import TokenStore from './store/TokenStore';
 
 function Router() {
   return (
-    <BrowserRouter>
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Main />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/list" element={<List />} />
-        <Route path="/detail/:id" element={<Detail />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/test" element={<Test />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <TokenStore>
+      <BrowserRouter>
+        <Nav />
+        <Routes>
+          <Route path="/" element={<Main />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/list" element={<List />} />
+          <Route path="/detail/:id" element={<Detail />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/test" element={<Test />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </TokenStore>
   );
 }
 

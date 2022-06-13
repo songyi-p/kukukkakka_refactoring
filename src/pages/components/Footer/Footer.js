@@ -8,11 +8,11 @@ import { AiFillYoutube } from 'react-icons/ai';
 function Footer() {
   return (
     <footer className={styles.footerWrapper}>
-      <article className={styles.footerConatiner}>
+      <article className={styles.footerContainer}>
         <section className={styles.iconWrapper}>
-          <AiFillFacebook size="40" color="white" />
-          <AiFillInstagram size="40" color="white" />
-          <AiFillYoutube size="40" color="white" />
+          <AiFillFacebook className={styles.iconStyle} />
+          <AiFillInstagram className={styles.iconStyle} />
+          <AiFillYoutube className={styles.iconStyle} />
         </section>
 
         <section className={styles.serviceWrapper}>
@@ -27,9 +27,10 @@ function Footer() {
             </button>
           </div>
           <img
+            className={styles.mainLogo}
             alt="main-logo"
             src={`${process.env.PUBLIC_URL}/img/main_logo_white.png`}
-            width="200"
+            width="180"
           />
         </section>
 

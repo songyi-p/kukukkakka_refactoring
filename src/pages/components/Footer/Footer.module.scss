@@ -2,25 +2,106 @@ $white: white;
 $border: 1px solid white;
 
 @mixin container {
-  max-width: 1100px;
-  width: 100%;
-  margin: 0 auto;
+  width: 1024px;
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    width: 768px;
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    width: 600px;
+  }
+
+  @media (min-width: 421px) and (max-width: 600px) {
+    max-width: 420px;
+  }
+
+  @media (max-width: 420px) {
+    width: 320px;
+  }
 }
 
+@mixin imgMargin {
+  @media (min-width: 601px) and (max-width: 1024px) {
+    margin-top: 20px;
+  }
+
+  @media (max-width: 600px) {
+    margin-top: 25px;
+  }
+}
+
+@mixin blockMedia {
+  @media (max-width: 1024px) {
+    display: inline-block;
+  }
+}
+
+@mixin wrapMedia {
+  @media (max-width: 1024px) {
+    flex-wrap: wrap;
+  }
+}
+
+@mixin infoFontSize {
+  font-size: 14px;
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    font-size: 12px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 10px;
+  }
+}
+
+@mixin serviceFontSize {
+  font-size: 22px;
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 18px;
+  }
+}
+
+@mixin iconSize {
+  font-size: 40px;
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    font-size: 35px;
+  }
+
+  @media (max-width: 600px) {
+    font-size: 30px;
+  }
+}
+
+//CSS 영역
 footer {
   color: $white;
 }
 
 .footerWrapper {
+  display: flex;
+  justify-content: center;
   padding: 80px 0;
   background-color: #222222;
 
-  .footerConatiner {
-    @include container();
+  .footerContainer {
+    @include container;
 
     .iconWrapper {
       display: flex;
       gap: 10px;
+      cursor: pointer;
+
+      .iconStyle {
+        @include iconSize;
+        color: white;
+      }
     }
   }
 }
@@ -31,19 +112,22 @@ footer {
   margin-bottom: 25px;
   padding-bottom: 10px;
   border-bottom: 0.5px solid #9b9b9b;
+  @include blockMedia;
+  @include imgMargin;
 
   .serviceSubWrapper {
     display: flex;
     align-items: center;
     gap: 20px;
+    @include wrapMedia;
 
     .serviceContent {
-      font-size: 22px;
+      @include serviceFontSize;
     }
     .serviceTime {
       color: #9b9b9b;
-      font-size: 14px;
       font-weight: 300;
+      @include infoFontSize;
     }
     .serviceButton {
       height: 40px;
@@ -53,18 +137,24 @@ footer {
       color: $white;
       background: none;
       cursor: pointer;
+      @include infoFontSize;
     }
+  }
+
+  .mainLogo {
+    @include imgMargin;
   }
 }
 
 .infoWrapper {
   color: #d3d3d3;
-  font-size: 14px;
+  @include infoFontSize;
 
   .infoContent {
     display: flex;
     margin: 10px 0;
     gap: 10px;
+    @include wrapMedia;
 
     .infoContentMiddle {
       padding: 0 10px;
@@ -72,14 +162,19 @@ footer {
       border-right: $border;
     }
   }
+
   .infoRights {
     display: flex;
     justify-content: space-between;
     margin: 10px 0;
+    @include blockMedia;
 
     .infoTermsOfUse {
       display: flex;
       gap: 20px;
+      @media (max-width: 1024px) {
+        margin-top: 10px;
+      }
     }
   }
 }

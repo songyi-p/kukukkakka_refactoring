@@ -40,7 +40,7 @@ function Login() {
   };
 
   const postLogin = () => {
-    fetch('/users/login', {
+    fetch('http://localhost:8000/users/login', {
       method: 'POST',
       headers: {
         'content-Type': 'application/json',
@@ -57,7 +57,7 @@ function Login() {
         } else if (res.status === 400) {
           alert('아이디와 비밀번호를 다시 확인해주세요 :)');
           return res.json();
-        } else if (res.statuse === 500) {
+        } else if (res.status === 500) {
           alert('서버 점검중입니다. 불편을 드려 죄송합니다.');
         } else return res.json();
       })

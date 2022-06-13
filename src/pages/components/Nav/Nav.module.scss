@@ -1,19 +1,40 @@
-$paddingValue: 0 10px 0 10px;
+$paddingValue: 0 10px;
 $darkColor: #222222;
 $yellowColor: #ffcd32;
 
 @mixin container {
-  max-width: 1100px;
-  width: 100%;
-  margin: 0 auto;
+  width: 1024px;
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    width: 768px;
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    width: 600px;
+  }
+
+  @media (min-width: 421px) and (max-width: 600px) {
+    max-width: 420px;
+  }
+
+  @media (max-width: 420px) {
+    width: 320px;
+  }
+}
+
+.allWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .headerWrapper {
-  @include container();
+  @include container;
 
   .headerList {
     display: flex;
     justify-content: flex-end;
+    flex-wrap: wrap;
     margin: 20px 0;
     list-style: none;
 
@@ -33,44 +54,75 @@ $yellowColor: #ffcd32;
       border-right: 1px solid $darkColor;
       font-weight: 300;
 
+      @media (min-width: 769px) and (max-width: 1024px) {
+        font-size: 14px;
+      }
+
+      @media (min-width: 601px) and (max-width: 768px) {
+        font-size: 13px;
+      }
+
+      @media (max-width: 600px) {
+        font-size: 11px;
+      }
+
+      @media (max-width: 420px) {
+        padding: 0 5px;
+      }
+
       .pointColor {
         color: #46cfa7;
         font-weight: 500;
       }
     }
-    .headerMenuBold {
-      padding: $paddingValue;
-      color: $darkColor;
-      font-weight: 400;
-    }
   }
 }
 
 .navSticky {
+  @include container();
   position: sticky;
   top: 0;
   background-color: white;
   z-index: 99;
 
   .navWrapper {
-    @include container();
     display: flex;
     justify-content: space-between;
     align-items: center;
 
     .mainLogo {
+      width: 200px;
       padding-top: 20px;
+
+      @media (max-width: 768px) {
+        width: 140px;
+      }
     }
+
     .navList {
-      display: flex;
-      justify-content: space-around;
-      gap: 60px;
+      @media (min-width: 1024px) {
+        display: flex;
+        justify-content: space-around;
+        gap: 50px;
+      }
+
+      @media (min-width: 768px) and (max-width: 1024px) {
+        gap: 20px;
+      }
+
+      @media (max-width: 768px) {
+        display: none;
+      }
 
       .navMenu {
         height: 30px;
         color: $darkColor;
         font-size: 18px;
         font-weight: 400;
+
+        @media (max-width: 1024px) {
+          font-size: 15px;
+        }
 
         &:hover {
           bottom: -14px;
@@ -81,9 +133,27 @@ $yellowColor: #ffcd32;
   }
 }
 
-.iconBlank {
+.navIcon {
   position: relative;
   margin-left: 20px;
+  color: #707070;
+  font-size: 40px;
+
+  @media (max-width: 768px) {
+    font-size: 30px;
+  }
+}
+
+.menuIcon {
+  @media (min-width: 769px) {
+    display: none;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 20px;
+    color: #707070;
+    font-size: 27px;
+  }
 }
 
 .cartCounterCss {
@@ -94,4 +164,57 @@ $yellowColor: #ffcd32;
   border-radius: 50%;
   background-color: $yellowColor;
   font-size: 12px;
+}
+
+@keyframes fadeIn {
+  0% {
+    transform: translateY(-15%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.hiddenNavList {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px 0;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+
+  @media (max-width: 600px) {
+    width: 420px;
+  }
+
+  @media (max-width: 420px) {
+    width: 320px;
+  }
+}
+
+.hiddenNavMenu {
+  margin-bottom: 5px;
+  height: 30px;
+  color: #525151;
+  font-size: 18px;
+  font-weight: 400;
+
+  @media (min-width: 421px) and (max-width: 600px) {
+    font-size: 15px;
+  }
+
+  @media (max-width: 420px) {
+    font-size: 13px;
+  }
+
+  &:hover {
+    bottom: -14px;
+    border-bottom: 5px solid $yellowColor;
+  }
 }

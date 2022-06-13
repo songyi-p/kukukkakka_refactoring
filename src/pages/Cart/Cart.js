@@ -14,7 +14,7 @@ function Cart() {
   }, []);
 
   const refreshData = async () => {
-    await fetch(`/carts`, {
+    await fetch(`http://localhost:8000/carts`, {
       headers: {
         'Content-Type': 'application/json',
         token: token,

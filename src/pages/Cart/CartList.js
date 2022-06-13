@@ -32,7 +32,7 @@ function CartList({ cart, refreshData }) {
   // console.log(cartData)
 
   useEffect(() => {
-    fetch('/carts', {
+    fetch('http://localhost:8000/carts', {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

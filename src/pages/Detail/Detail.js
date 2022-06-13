@@ -45,7 +45,7 @@ function Detail() {
   const token = localStorage.getItem('token');
 
   useEffect(() => {
-    fetch(`/products/${params.id}`)
+    fetch(`http://localhost:8000/products/${params.id}`)
       .then(res => res.json())
       .then(res => {
         setProduct(res);
@@ -53,7 +53,7 @@ function Detail() {
   }, [params.id]);
 
   const postToCart = () => {
-    fetch('/carts', {
+    fetch('http://localhost:8000/carts', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
