@@ -23,7 +23,7 @@ function MainListCard({
 
   useEffect(() => {
     cardRef.current.style.transition = 'all 0.3s ease-in-out';
-    cardRef.current.style.transform = `translateX(-${nowCard * 25}%)`;
+    cardRef.current.style.transform = `translateX(-${nowCard * 280}px)`;
   }, [nowCard]);
 
   return (
@@ -34,7 +34,11 @@ function MainListCard({
         margin: containerMargin,
       }}
     >
-      <div className={styles.mainSubContainer}>
+      <div
+        className={
+          hide === 'none' ? styles.flowerTopContainer : styles.mainSubContainer
+        }
+      >
         <div className={styles.mainSubFlex}>
           <h2 className={styles.mainSubTitle}>
             {title} <strong>{subTitle}</strong>
@@ -44,21 +48,26 @@ function MainListCard({
           </span>
         </div>
         <div className={styles.flowerListContainer}>
-          <div className={styles.flowerList} ref={cardRef}>
+          <div
+            className={
+              hide === 'none' ? styles.flowerTopList : styles.flowerList
+            }
+            ref={cardRef}
+          >
             {lists.map(list => (
               <ListCard key={list.id} list={list} />
             ))}
           </div>
         </div>
+        <button
+          type="button"
+          className={styles.turn_list_card_btn}
+          onClick={nextListCard}
+          style={{ display: hide }}
+        >
+          〉
+        </button>
       </div>
-      <button
-        type="button"
-        className={styles.turn_list_card_btn}
-        onClick={nextListCard}
-        style={{ display: hide }}
-      >
-        〉
-      </button>
     </section>
   );
 }

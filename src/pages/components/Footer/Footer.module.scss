@@ -2,9 +2,9 @@ $white: white;
 $border: 1px solid white;
 
 @mixin container {
-  width: 1024px;
+  width: 1100px;
 
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 769px) and (max-width: 1100px) {
     width: 768px;
   }
 
@@ -22,7 +22,7 @@ $border: 1px solid white;
 }
 
 @mixin imgMargin {
-  @media (min-width: 601px) and (max-width: 1024px) {
+  @media (min-width: 601px) and (max-width: 1100px) {
     margin-top: 20px;
   }
 
@@ -32,13 +32,13 @@ $border: 1px solid white;
 }
 
 @mixin blockMedia {
-  @media (max-width: 1024px) {
+  @media (max-width: 1100px) {
     display: inline-block;
   }
 }
 
 @mixin wrapMedia {
-  @media (max-width: 1024px) {
+  @media (max-width: 1100px) {
     flex-wrap: wrap;
   }
 }
@@ -79,6 +79,18 @@ $border: 1px solid white;
   }
 }
 
+@mixin paddingMedia {
+  padding: 80px 0;
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    padding: 60px 0;
+  }
+
+  @media (max-width: 600px) {
+    padding: 45px 0;
+  }
+}
+
 //CSS 영역
 footer {
   color: $white;
@@ -87,8 +99,8 @@ footer {
 .footerWrapper {
   display: flex;
   justify-content: center;
-  padding: 80px 0;
   background-color: #222222;
+  @include paddingMedia;
 
   .footerContainer {
     @include container;
@@ -172,7 +184,7 @@ footer {
     .infoTermsOfUse {
       display: flex;
       gap: 20px;
-      @media (max-width: 1024px) {
+      @media (max-width: 1100px) {
         margin-top: 10px;
       }
     }

@@ -3,9 +3,9 @@ $darkColor: #222222;
 $yellowColor: #ffcd32;
 
 @mixin container {
-  width: 1024px;
+  width: 1100px;
 
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 769px) and (max-width: 1100px) {
     width: 768px;
   }
 
@@ -14,7 +14,7 @@ $yellowColor: #ffcd32;
   }
 
   @media (min-width: 421px) and (max-width: 600px) {
-    max-width: 420px;
+    width: 420px;
   }
 
   @media (max-width: 420px) {
@@ -23,7 +23,7 @@ $yellowColor: #ffcd32;
 }
 
 @mixin headerMenuMedia {
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 769px) and (max-width: 1100px) {
     font-size: 14px;
   }
 
@@ -41,13 +41,13 @@ $yellowColor: #ffcd32;
 }
 
 @mixin navListMedia {
-  @media (min-width: 1024px) {
+  @media (min-width: 1100px) {
     display: flex;
     justify-content: space-around;
     gap: 50px;
   }
 
-  @media (min-width: 768px) and (max-width: 1024px) {
+  @media (min-width: 768px) and (max-width: 1100px) {
     gap: 20px;
   }
 
@@ -162,8 +162,9 @@ $yellowColor: #ffcd32;
         color: $darkColor;
         font-size: 18px;
         font-weight: 400;
+        cursor: pointer;
 
-        @media (max-width: 1024px) {
+        @media (max-width: 1100px) {
           font-size: 15px;
         }
 
@@ -181,6 +182,7 @@ $yellowColor: #ffcd32;
   margin-left: 20px;
   color: #707070;
   font-size: 40px;
+  cursor: pointer;
 
   @media (max-width: 768px) {
     font-size: 30px;
@@ -228,6 +230,7 @@ $yellowColor: #ffcd32;
   color: #525151;
   font-size: 18px;
   font-weight: 400;
+  cursor: pointer;
 
   @include hiddenNavMenuMedia;
 

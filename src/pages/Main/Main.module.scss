@@ -3,7 +3,7 @@ $yellowColor: #ffcd32;
 //반응형 mixin
 @mixin btnSizeMedia {
   font-size: 14px;
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 769px) and (max-width: 1100px) {
     font-size: 12px;
   }
   @media (min-width: 601px) and (max-width: 768px) {
@@ -15,7 +15,7 @@ $yellowColor: #ffcd32;
 }
 
 @mixin btnPositionMedia {
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 769px) and (max-width: 1100px) {
     top: 82%;
     left: 42%;
   }
@@ -34,7 +34,7 @@ $yellowColor: #ffcd32;
 }
 
 @mixin mainTitleMedia {
-  @media (min-width: 769px) and (max-width: 1024px) {
+  @media (min-width: 769px) and (max-width: 1100px) {
     font-size: 25px;
   }
   @media (min-width: 601px) and (max-width: 768px) {
@@ -61,18 +61,18 @@ $yellowColor: #ffcd32;
     font-size: 11px;
   }
   @media (max-width: 600px) {
-    margin-top: 30px;
+    margin-top: 25px;
     padding: 12px 25px;
     font-size: 9px;
   }
 }
 
 @mixin subscribeCardMedia {
-  @media (min-width: 601px) and (max-width: 1024px) {
+  @media (min-width: 601px) and (max-width: 1100px) {
     margin-top: -60px;
   }
   @media (max-width: 600px) {
-    margin-top: -80px;
+    margin-top: -100px;
   }
 }
 
@@ -103,6 +103,7 @@ $yellowColor: #ffcd32;
     border: none;
     color: rgb(241, 239, 239);
     background-color: rgba(150, 150, 150, 0.5);
+    cursor: pointer;
     @include btnSizeMedia;
   }
   .turnBannerCounter {
@@ -121,19 +122,19 @@ $yellowColor: #ffcd32;
   justify-content: space-evenly;
   margin: 0 auto;
 
-  @media (max-width: 1024px) {
+  @media (max-width: 1100px) {
     display: block;
   }
 
   .mainTitleWrapper {
     padding-top: 150px;
     text-align: center;
-    @media (max-width: 1024px) {
-      padding-top: 70px;
+    @media (max-width: 1100px) {
+      padding-top: 60px;
     }
 
     .mainTitle {
-      margin-bottom: 15px;
+      margin-bottom: 0.7em;
       font-size: 30px;
       font-weight: 400;
       @include mainTitleMedia;
@@ -143,7 +144,7 @@ $yellowColor: #ffcd32;
       @include mainTitleMedia;
     }
     .mainTitleContent {
-      margin: 25px 0;
+      margin: 1.5em 0;
       color: #787878;
       font-weight: 300;
       @include mainContentMedia;
