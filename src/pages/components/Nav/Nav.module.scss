@@ -134,7 +134,7 @@ $yellowColor: #ffcd32;
 }
 
 .navSticky {
-  @include container();
+  @include container;
   position: sticky;
   top: 0;
   background-color: white;

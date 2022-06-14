@@ -22,7 +22,7 @@ function MainListCard({
   };
 
   useEffect(() => {
-    cardRef.current.style.transition = 'all 0.3s ease-in-out';
+    cardRef.current.style.transition = 'all 0.35s ease-in-out';
     cardRef.current.style.transform = `translateX(-${nowCard * 280}px)`;
   }, [nowCard]);
 
@@ -47,16 +47,18 @@ function MainListCard({
             {text}
           </span>
         </div>
-        <div className={styles.flowerListContainer}>
-          <div
-            className={
-              hide === 'none' ? styles.flowerTopList : styles.flowerList
-            }
-            ref={cardRef}
-          >
-            {lists.map(list => (
-              <ListCard key={list.id} list={list} />
-            ))}
+        <div className={styles.flowerListPosition}>
+          <div className={styles.flowerListContainer}>
+            <div
+              className={
+                hide === 'none' ? styles.flowerTopList : styles.flowerList
+              }
+              ref={cardRef}
+            >
+              {lists.map(list => (
+                <ListCard key={list.id} list={list} />
+              ))}
+            </div>
           </div>
         </div>
         <button

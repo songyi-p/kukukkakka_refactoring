@@ -1,7 +1,7 @@
 $yellowColor: #ffcd32;
 
 //반응형 mixin
-@mixin btnSizeMedia {
+@mixin btnSize {
   font-size: 14px;
   @media (min-width: 769px) and (max-width: 1100px) {
     font-size: 12px;
@@ -14,7 +14,7 @@ $yellowColor: #ffcd32;
   }
 }
 
-@mixin btnPositionMedia {
+@mixin btnPosition {
   @media (min-width: 769px) and (max-width: 1100px) {
     top: 82%;
     left: 42%;
@@ -33,7 +33,7 @@ $yellowColor: #ffcd32;
   }
 }
 
-@mixin mainTitleMedia {
+@mixin titleFontSize {
   @media (min-width: 769px) and (max-width: 1100px) {
     font-size: 25px;
   }
@@ -45,7 +45,7 @@ $yellowColor: #ffcd32;
   }
 }
 
-@mixin mainContentMedia {
+@mixin contentFontSize {
   @media (min-width: 601px) and (max-width: 768px) {
     font-size: 12px;
   }
@@ -95,7 +95,7 @@ $yellowColor: #ffcd32;
   position: absolute;
   top: 85%;
   left: 45%;
-  @include btnPositionMedia;
+  @include btnPosition;
 
   .turnBannerBtn {
     padding: 5px 13px 5px 5px;
@@ -104,7 +104,7 @@ $yellowColor: #ffcd32;
     color: rgb(241, 239, 239);
     background-color: rgba(150, 150, 150, 0.5);
     cursor: pointer;
-    @include btnSizeMedia;
+    @include btnSize;
   }
   .turnBannerCounter {
     padding: 6px 17px;
@@ -113,7 +113,7 @@ $yellowColor: #ffcd32;
     border-radius: 20px;
     color: white;
     background-color: rgba(52, 50, 50, 0.4);
-    @include btnSizeMedia;
+    @include btnSize;
   }
 }
 
@@ -137,17 +137,17 @@ $yellowColor: #ffcd32;
       margin-bottom: 0.7em;
       font-size: 30px;
       font-weight: 400;
-      @include mainTitleMedia;
+      @include titleFontSize;
     }
     .mainTitleBottom {
       font-size: 30px;
-      @include mainTitleMedia;
+      @include titleFontSize;
     }
     .mainTitleContent {
       margin: 1.5em 0;
       color: #787878;
       font-weight: 300;
-      @include mainContentMedia;
+      @include contentFontSize;
     }
   }
 }
