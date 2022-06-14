@@ -69,24 +69,20 @@ $yellowColor: #ffcd32;
 }
 
 @mixin cartCounterMedia {
-  right: -1%;
+  right: -10%;
 
-  @media (min-width: 601px) and (max-width: 768px) {
-    right: 5.5%;
-  }
-
-  @media (min-width: 421px) and (max-width: 600px) {
-    right: 8%;
-  }
-
-  @media (max-width: 420px) {
-    right: 10%;
+  @media (max-width: 768px) {
+    right: 25%;
   }
 }
 
 @mixin hiddenNavListMedia {
   @media (min-width: 768px) {
     display: none;
+  }
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    width: 600px;
   }
 
   @media (min-width: 421px) and (max-width: 600px) {
@@ -151,13 +147,16 @@ $yellowColor: #ffcd32;
 }
 
 .navSticky {
-  @include container;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   position: sticky;
   top: 0;
   background-color: white;
   z-index: 99;
 
   .navWrapper {
+    @include container;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -194,25 +193,28 @@ $yellowColor: #ffcd32;
   }
 }
 
-.navIcon {
+.iconWrapper {
   position: relative;
-  margin-left: 20px;
-  color: #707070;
-  font-size: 40px;
-  cursor: pointer;
 
-  @media (max-width: 768px) {
-    font-size: 30px;
+  .navIcon {
+    margin-left: 20px;
+    color: #707070;
+    font-size: 40px;
+    cursor: pointer;
+
+    @media (max-width: 768px) {
+      font-size: 30px;
+    }
   }
-}
 
-.menuIcon {
-  @include menuIconMedia;
+  .menuIcon {
+    @include menuIconMedia;
+  }
 }
 
 .cartCounterCss {
   position: absolute;
-  top: 20%;
+  top: -10%;
   padding: 3px 6px;
   border-radius: 50%;
   background-color: $yellowColor;
@@ -230,29 +232,39 @@ $yellowColor: #ffcd32;
   }
 }
 
-.hiddenNavList {
-  width: 600px;
+.hiddenNavContainer {
+  position: sticky;
+  top: 70px;
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 10px 0;
-  animation-name: fadeIn;
-  animation-duration: 1s;
-  @include hiddenNavListMedia;
-}
+  justify-content: center;
+  background-color: white;
+  z-index: 1000;
 
-.hiddenNavMenu {
-  margin-bottom: 5px;
-  height: 30px;
-  color: #525151;
-  font-size: 18px;
-  font-weight: 400;
-  cursor: pointer;
+  .hiddenNavWrapper {
+    @include hiddenNavListMedia;
 
-  @include hiddenNavMenuMedia;
+    .hiddenNavList {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding: 10px 0;
+      animation-name: fadeIn;
+      animation-duration: 1s;
 
-  &:hover {
-    bottom: -14px;
-    border-bottom: 5px solid $yellowColor;
+      .hiddenNavMenu {
+        margin-bottom: 5px;
+        height: 30px;
+        color: #525151;
+        font-size: 18px;
+        font-weight: 400;
+        cursor: pointer;
+        @include hiddenNavMenuMedia;
+
+        &:hover {
+          bottom: -14px;
+          border-bottom: 5px solid $yellowColor;
+        }
+      }
+    }
   }
 }

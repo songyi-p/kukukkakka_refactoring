@@ -72,38 +72,40 @@ function Nav() {
   }, [isLogIn]);
 
   return (
-    <div className={styles.allWrapper}>
-      <header className={styles.headerWrapper}>
-        <ul className={styles.headerList}>
-          {isLogIn ? (
-            <li className={styles.headerLine}>
-              반갑습니다.
-              <span className={styles.headerUserName}>{userName}</span>님!
-            </li>
-          ) : (
-            <Link to="/login" style={{ textDecoration: 'none' }}>
-              <li className={styles.headerMenu}>로그인</li>
-            </Link>
-          )}
-          {isLogIn ? (
-            ''
-          ) : (
-            <Link to="/signup" style={{ textDecoration: 'none' }}>
-              <li className={styles.headerMenu}>
-                회원가입
-                <span className={styles.pointColor}>(1000포인트 지급!)</span>
+    <>
+      <div className={styles.allWrapper}>
+        <header className={styles.headerWrapper}>
+          <ul className={styles.headerList}>
+            {isLogIn ? (
+              <li className={styles.headerLine}>
+                반갑습니다.
+                <span className={styles.headerUserName}>{userName}</span>님!
               </li>
-            </Link>
-          )}
-          <li className={styles.headerMenu}>꾸까 고객센터</li>
-          <li
-            className={styles.headerMenu}
-            style={{ fontWeight: 400, border: 0, paddingRight: 0 }}
-          >
-            기업제휴
-          </li>
-        </ul>
-      </header>
+            ) : (
+              <Link to="/login" style={{ textDecoration: 'none' }}>
+                <li className={styles.headerMenu}>로그인</li>
+              </Link>
+            )}
+            {isLogIn ? (
+              ''
+            ) : (
+              <Link to="/signup" style={{ textDecoration: 'none' }}>
+                <li className={styles.headerMenu}>
+                  회원가입
+                  <span className={styles.pointColor}>(1000포인트 지급!)</span>
+                </li>
+              </Link>
+            )}
+            <li className={styles.headerMenu}>꾸까 고객센터</li>
+            <li
+              className={styles.headerMenu}
+              style={{ fontWeight: 400, border: 0, paddingRight: 0 }}
+            >
+              기업제휴
+            </li>
+          </ul>
+        </header>
+      </div>
 
       <nav className={styles.navSticky} style={{ borderBottom: borderLine }}>
         <div className={styles.navWrapper}>
@@ -129,7 +131,8 @@ function Nav() {
             <li className={styles.navMenu}>소품샵</li>
             <li className={styles.navMenu}>이벤트</li>
           </ul>
-          <div>
+
+          <div className={styles.iconWrapper}>
             <Link to="/login">
               <AiOutlineUser
                 className={styles.navIcon}
@@ -156,22 +159,30 @@ function Nav() {
         </div>
       </nav>
 
-      <ul
-        className={styles.hiddenNavList}
-        style={{
-          display: menuOpen ? '' : 'none',
-        }}
-      >
-        <li className={styles.hiddenNavMenu}>꽃 정기구독</li>
-        <Link to="/list" style={{ textDecoration: 'none' }} onClick={goToTop}>
-          <li className={styles.hiddenNavMenu}>꽃다발</li>
-        </Link>
-        <li className={styles.hiddenNavMenu}>당일배송</li>
-        <li className={styles.hiddenNavMenu}>플라워클래스</li>
-        <li className={styles.hiddenNavMenu}>소품샵</li>
-        <li className={styles.hiddenNavMenu}>이벤트</li>
-      </ul>
-    </div>
+      <div className={styles.hiddenNavContainer}>
+        <div className={styles.hiddenNavWrapper}>
+          <ul
+            className={styles.hiddenNavList}
+            style={{
+              display: menuOpen ? '' : 'none',
+            }}
+          >
+            <li className={styles.hiddenNavMenu}>꽃 정기구독</li>
+            <Link
+              to="/list"
+              style={{ textDecoration: 'none' }}
+              onClick={goToTop}
+            >
+              <li className={styles.hiddenNavMenu}>꽃다발</li>
+            </Link>
+            <li className={styles.hiddenNavMenu}>당일배송</li>
+            <li className={styles.hiddenNavMenu}>플라워클래스</li>
+            <li className={styles.hiddenNavMenu}>소품샵</li>
+            <li className={styles.hiddenNavMenu}>이벤트</li>
+          </ul>
+        </div>
+      </div>
+    </>
   );
 }
 
