@@ -6,7 +6,7 @@ import { AiOutlineShopping } from 'react-icons/ai';
 import { AiOutlineMenu } from 'react-icons/ai';
 
 function Nav() {
-  const [token, setToken] = useState('');
+  const token = localStorage.getItem('token');
   const [borderLine, setBorderLine] = useState('');
   const [counter, setCounter] = useState(0);
   const [userName, setUserName] = useState('');
@@ -46,7 +46,6 @@ function Nav() {
     })
       .then(res => res.json())
       .then(data => {
-        setToken(localStorage.getItem('token'));
         setCounter(data.userCart.length);
       });
   }, [isLogIn]);
@@ -60,7 +59,6 @@ function Nav() {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setUserName(data.userName[0].username);
       });
   }, [isLogIn]);

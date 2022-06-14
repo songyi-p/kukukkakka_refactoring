@@ -68,12 +68,28 @@ $yellowColor: #ffcd32;
   }
 }
 
+@mixin cartCounterMedia {
+  right: -1%;
+
+  @media (min-width: 601px) and (max-width: 768px) {
+    right: 5.5%;
+  }
+
+  @media (min-width: 421px) and (max-width: 600px) {
+    right: 8%;
+  }
+
+  @media (max-width: 420px) {
+    right: 10%;
+  }
+}
+
 @mixin hiddenNavListMedia {
   @media (min-width: 768px) {
     display: none;
   }
 
-  @media (max-width: 600px) {
+  @media (min-width: 421px) and (max-width: 600px) {
     width: 420px;
   }
 
@@ -111,6 +127,7 @@ $yellowColor: #ffcd32;
     .headerLine {
       padding: $paddingValue;
       border-right: 1px solid $darkColor;
+      @include headerMenuMedia;
 
       .headerUserName {
         color: $yellowColor;
@@ -196,11 +213,11 @@ $yellowColor: #ffcd32;
 .cartCounterCss {
   position: absolute;
   top: 20%;
-  right: 11%;
   padding: 3px 6px;
   border-radius: 50%;
   background-color: $yellowColor;
   font-size: 12px;
+  @include cartCounterMedia;
 }
 
 @keyframes fadeIn {
