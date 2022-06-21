@@ -4,9 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AiOutlineUser } from 'react-icons/ai';
 import { AiOutlineShopping } from 'react-icons/ai';
 import { AiOutlineMenu } from 'react-icons/ai';
+import { useContext } from 'react';
+import { UserContext } from '../../../context/UserContext';
 
 function Nav() {
   const token = localStorage.getItem('token');
+  const { navUpdate, setNavUpdate } = useContext(UserContext);
   const [borderLine, setBorderLine] = useState('');
   const [counter, setCounter] = useState(0);
   const [userName, setUserName] = useState('');
@@ -47,8 +50,9 @@ function Nav() {
       .then(res => res.json())
       .then(data => {
         setCounter(data.userCart.length);
+        setNavUpdate(false);
       });
-  }, [isLogIn]);
+  }, [navUpdate, isLogIn]);
 
   useEffect(() => {
     fetch('http://localhost:8000/users/name', {
@@ -60,23 +64,20 @@ function Nav() {
       .then(res => res.json())
       .then(data => {
         setUserName(data.userName[0].username);
+        setNavUpdate(false);
       });
-  }, [isLogIn]);
+  }, [navUpdate, isLogIn]);
 
   useEffect(() => {
-    if (token) {
-      setIsLogIn(true);
-    } else {
-      setIsLogIn(false);
-    }
-  }, [isLogIn]);
+    token ? setIsLogIn(true) : setIsLogIn(false);
+  }, []);
 
   return (
     <>
       <div className={styles.allWrapper}>
         <header className={styles.headerWrapper}>
           <ul className={styles.headerList}>
-            {isLogIn ? (
+            {navUpdate || isLogIn ? (
               <li className={styles.headerLine}>
                 반갑습니다.
                 <span className={styles.headerUserName}>{userName}</span>님!
@@ -86,7 +87,7 @@ function Nav() {
                 <li className={styles.headerMenu}>로그인</li>
               </Link>
             )}
-            {isLogIn ? (
+            {navUpdate || isLogIn ? (
               ''
             ) : (
               <Link to="/signup" style={{ textDecoration: 'none' }}>
@@ -145,7 +146,7 @@ function Nav() {
               onClick={vaildLogin}
             />
             <AiOutlineMenu className={styles.menuIcon} onClick={clickMenu} />
-            {isLogIn && (
+            {navUpdate || isLogIn ? (
               <span
                 className={styles.cartCounterCss}
                 style={{
@@ -154,6 +155,8 @@ function Nav() {
               >
                 {counter}
               </span>
+            ) : (
+              ''
             )}
           </div>
         </div>

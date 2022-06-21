@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Main from './pages/Main/Main';
 import Signup from './pages/Signup/Signup';
@@ -9,11 +9,13 @@ import Cart from './pages/Cart/Cart';
 import Nav from './pages/components/Nav/Nav';
 import Footer from './pages/components/Footer/Footer';
 import Test from './pages/Login/Test';
-import TokenStore from './store/TokenStore';
+import { UserContext } from './context/UserContext';
 
 function Router() {
+  const [navUpdate, setNavUpdate] = useState(false);
+
   return (
-    <TokenStore>
+    <UserContext.Provider value={{ navUpdate, setNavUpdate }}>
       <BrowserRouter>
         <Nav />
         <Routes>
@@ -27,7 +29,7 @@ function Router() {
         </Routes>
         <Footer />
       </BrowserRouter>
-    </TokenStore>
+    </UserContext.Provider>
   );
 }
 
