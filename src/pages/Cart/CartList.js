@@ -3,8 +3,6 @@ import styles from '../Cart/CartList.module.scss';
 import { IoCloseSharp, IoCheckmark } from 'react-icons/io5';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import Option from '../Cart/Option';
-import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
 
 function CartList({ cart, refreshData }) {
   const [isChecked, setIsChecked] = useState(false);
@@ -14,7 +12,6 @@ function CartList({ cart, refreshData }) {
   const totalPrice = productPrice + cart.addOptionPrice[0];
   const token = localStorage.getItem('token');
   let id = cart.id;
-  const { setCartUpdate } = useContext(UserContext);
 
   const handleDelete = async () => {
     await fetch('http://localhost:8000/carts', {
@@ -97,7 +94,6 @@ function CartList({ cart, refreshData }) {
             onClick={async () => {
               await handleDelete();
               await refreshData();
-              setCartUpdate(true);
             }}
           >
             <IoCloseSharp />

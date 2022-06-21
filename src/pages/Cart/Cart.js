@@ -2,9 +2,12 @@ import React, { useEffect, useState } from 'react';
 import styles from '../Cart/Cart.module.scss';
 import { IoCheckmark, IoAlertCircleOutline } from 'react-icons/io5';
 import CartList from './CartList';
+import { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 function Cart() {
   const token = localStorage.getItem('token');
+  const { setCartUpdate } = useContext(UserContext);
   const [cartData, setCartData] = useState({
     userCart: [],
   });
@@ -21,7 +24,7 @@ function Cart() {
       },
     })
       .then(res => res.json())
-      .then(data => setCartData(data));
+      .then(data => setCartData(data), setCartUpdate(true));
   };
 
   return (

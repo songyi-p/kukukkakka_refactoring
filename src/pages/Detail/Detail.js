@@ -5,13 +5,10 @@ import style from './Detail.module.scss';
 import OptionList from './OptionList/OptionList';
 import AddedOptionBox from './AddedOptionBox/AddedOptionBox';
 import DetailModal from './DetailModal';
-import { useContext } from 'react';
-import { UserContext } from '../../context/UserContext';
 
 function Detail() {
   const params = useParams();
   const navigate = useNavigate();
-  const { setCartUpdate } = useContext(UserContext);
 
   const [product, setProduct] = useState({
     productDetailData: [
@@ -98,10 +95,9 @@ function Detail() {
       setModal(false);
       return;
     } else {
+      postToCart();
       setModal(true);
       window.scrollTo(0, 0);
-      postToCart();
-      setCartUpdate(true);
     }
   };
 
