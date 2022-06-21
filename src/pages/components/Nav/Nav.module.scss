@@ -136,6 +136,7 @@ $yellowColor: #ffcd32;
       color: $darkColor;
       border-right: 1px solid $darkColor;
       font-weight: 300;
+      cursor: pointer;
       @include headerMenuMedia;
 
       .pointColor {

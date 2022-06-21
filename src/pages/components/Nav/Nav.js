@@ -9,7 +9,8 @@ import { UserContext } from '../../../context/UserContext';
 
 function Nav() {
   const token = localStorage.getItem('token');
-  const { navUpdate, setNavUpdate } = useContext(UserContext);
+  const { navUpdate, setNavUpdate, cartUpdate, setCartUpdate } =
+    useContext(UserContext);
   const [borderLine, setBorderLine] = useState('');
   const [counter, setCounter] = useState(0);
   const [userName, setUserName] = useState('');
@@ -40,6 +41,13 @@ function Nav() {
     menuOpen ? setMenuOpen(false) : setMenuOpen(true);
   };
 
+  const logOut = () => {
+    alert('로그아웃 되었습니다.');
+    localStorage.removeItem('token');
+    setNavUpdate(false);
+    setIsLogIn(false);
+  };
+
   useEffect(() => {
     fetch('http://localhost:8000/carts', {
       headers: {
@@ -50,9 +58,9 @@ function Nav() {
       .then(res => res.json())
       .then(data => {
         setCounter(data.userCart.length);
-        setNavUpdate(false);
+        setCartUpdate(false);
       });
-  }, [navUpdate, isLogIn]);
+  }, [navUpdate, isLogIn, cartUpdate]);
 
   useEffect(() => {
     fetch('http://localhost:8000/users/name', {
@@ -64,9 +72,9 @@ function Nav() {
       .then(res => res.json())
       .then(data => {
         setUserName(data.userName[0].username);
-        setNavUpdate(false);
+        setCartUpdate(false);
       });
-  }, [navUpdate, isLogIn]);
+  }, [navUpdate, isLogIn, cartUpdate]);
 
   useEffect(() => {
     token ? setIsLogIn(true) : setIsLogIn(false);
@@ -78,10 +86,15 @@ function Nav() {
         <header className={styles.headerWrapper}>
           <ul className={styles.headerList}>
             {navUpdate || isLogIn ? (
-              <li className={styles.headerLine}>
-                반갑습니다.
-                <span className={styles.headerUserName}>{userName}</span>님!
-              </li>
+              <ul>
+                <li className={styles.headerLine}>
+                  반갑습니다.
+                  <span className={styles.headerUserName}>{userName}</span>님!
+                </li>
+                <li className={styles.headerMenu} onClick={logOut}>
+                  로그아웃
+                </li>
+              </ul>
             ) : (
               <Link to="/login" style={{ textDecoration: 'none' }}>
                 <li className={styles.headerMenu}>로그인</li>

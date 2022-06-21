@@ -6,7 +6,7 @@ import styles from './Login.module.scss';
 import Modal from './Modal';
 
 function Login() {
-  const { setUNavUpdate } = useContext(UserContext);
+  const { setNavUpdate } = useContext(UserContext);
   const [modalOpen, setModalOpen] = useState(false);
   const modalHandler = () => {
     setModalOpen(!modalOpen);
@@ -67,7 +67,7 @@ function Login() {
       .then(res => {
         if (res.token) {
           localStorage.setItem('token', res.token);
-          setUNavUpdate(true);
+          setNavUpdate(true);
         } else {
           console.log('에러발생 : ', res.message);
         }

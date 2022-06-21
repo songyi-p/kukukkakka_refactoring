@@ -13,9 +13,12 @@ import { UserContext } from './context/UserContext';
 
 function Router() {
   const [navUpdate, setNavUpdate] = useState(false);
+  const [cartUpdate, setCartUpdate] = useState(false);
 
   return (
-    <UserContext.Provider value={{ navUpdate, setNavUpdate }}>
+    <UserContext.Provider
+      value={{ navUpdate, setNavUpdate, cartUpdate, setCartUpdate }}
+    >
       <BrowserRouter>
         <Nav />
         <Routes>

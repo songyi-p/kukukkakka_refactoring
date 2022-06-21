@@ -14,7 +14,7 @@ function CartList({ cart, refreshData }) {
   const totalPrice = productPrice + cart.addOptionPrice[0];
   const token = localStorage.getItem('token');
   let id = cart.id;
-  const { setNavUpdate } = useContext(UserContext);
+  const { setCartUpdate } = useContext(UserContext);
 
   const handleDelete = async () => {
     await fetch('http://localhost:8000/carts', {
@@ -97,7 +97,7 @@ function CartList({ cart, refreshData }) {
             onClick={async () => {
               await handleDelete();
               await refreshData();
-              setNavUpdate(true);
+              setCartUpdate(true);
             }}
           >
             <IoCloseSharp />

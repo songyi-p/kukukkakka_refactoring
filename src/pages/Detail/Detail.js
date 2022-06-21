@@ -11,7 +11,7 @@ import { UserContext } from '../../context/UserContext';
 function Detail() {
   const params = useParams();
   const navigate = useNavigate();
-  const { setNavUpdate } = useContext(UserContext);
+  const { setCartUpdate } = useContext(UserContext);
 
   const [product, setProduct] = useState({
     productDetailData: [
@@ -101,7 +101,7 @@ function Detail() {
       setModal(true);
       window.scrollTo(0, 0);
       postToCart();
-      setNavUpdate(true);
+      setCartUpdate(true);
     }
   };
 
