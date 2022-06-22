@@ -156,7 +156,10 @@ function Nav() {
             </Link>
             <AiOutlineShopping
               className={styles.navIcon}
-              onClick={vaildLogin}
+              onClick={() => {
+                vaildLogin();
+                goToTop();
+              }}
             />
             <AiOutlineMenu className={styles.menuIcon} onClick={clickMenu} />
             {navUpdate || isLogIn ? (
