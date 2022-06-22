@@ -21,6 +21,7 @@ function Nav() {
 
   const goToTop = () => {
     window.scrollTo(0, 0);
+    setMenuOpen(false);
   };
 
   const changeNavbarColor = () => {
