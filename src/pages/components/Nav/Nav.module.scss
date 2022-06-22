@@ -75,22 +75,37 @@ $yellowColor: #ffcd32;
     right: 25%;
   }
 }
-
-@mixin hiddenNavListMedia {
-  @media (min-width: 768px) {
+@mixin displayNone {
+  @media (min-width: 769px) {
     display: none;
   }
+}
 
+@mixin hiddenNavListMedia {
   @media (min-width: 601px) and (max-width: 768px) {
-    width: 600px;
+    width: 170px;
   }
 
   @media (min-width: 421px) and (max-width: 600px) {
-    width: 420px;
+    width: 150px;
   }
 
   @media (max-width: 420px) {
-    width: 320px;
+    width: 120px;
+  }
+}
+
+@mixin hiddenMainLogoMedia {
+  @media (min-width: 601px) and (max-width: 768px) {
+    width: 140px;
+  }
+
+  @media (min-width: 421px) and (max-width: 600px) {
+    width: 120px;
+  }
+
+  @media (max-width: 420px) {
+    width: 100px;
   }
 }
 
@@ -239,22 +254,31 @@ $yellowColor: #ffcd32;
   position: fixed;
   top: 0;
   right: 0;
-  background-color: gainsboro;
+  display: flex;
+  justify-content: flex-end;
+  background-color: rgba(0, 0, 0, 0.2);
   z-index: 100;
+  @include displayNone;
 
   .hiddenNavWrapper {
     height: 100vh;
-    width: 200px;
-    padding-top: 130px;
+    padding: 110px 0;
     background-color: white;
+    border-left: 1.5px solid $yellowColor;
+    animation-name: fadeIn;
+    animation-duration: 1s;
+    @include hiddenNavListMedia;
 
     .hiddenNavList {
       display: flex;
       flex-direction: column;
-      align-items: flex-end;
+      align-items: center;
       padding: 10px 0;
-      animation-name: fadeIn;
-      animation-duration: 1s;
+
+      .hiddenMainLogo {
+        padding-bottom: 15px;
+        @include hiddenMainLogoMedia;
+      }
 
       .hiddenNavMenu {
         margin-bottom: 5px;

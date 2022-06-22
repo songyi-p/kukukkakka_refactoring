@@ -79,9 +79,6 @@ function Nav() {
     token ? setIsLogIn(true) : setIsLogIn(false);
   }, []);
 
-  const why = '왜안돼?';
-  console.log(why);
-
   return (
     <>
       <div className={styles.allWrapper}>
@@ -182,9 +179,17 @@ function Nav() {
         style={{
           display: menuOpen ? '' : 'none',
         }}
+        onClick={() => {
+          setMenuOpen(false);
+        }}
       >
         <div className={styles.hiddenNavWrapper}>
           <ul className={styles.hiddenNavList}>
+            <img
+              className={styles.hiddenMainLogo}
+              alt="main-logo"
+              src={`${process.env.PUBLIC_URL}/img/main_logo.png`}
+            />
             <li className={styles.hiddenNavMenu}>꽃 정기구독</li>
             <Link
               to="/list"
