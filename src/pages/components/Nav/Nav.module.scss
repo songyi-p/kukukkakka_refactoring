@@ -91,7 +91,7 @@ $yellowColor: #ffcd32;
   }
 
   @media (max-width: 420px) {
-    width: 120px;
+    width: 130px;
   }
 }
 
@@ -225,6 +225,7 @@ $yellowColor: #ffcd32;
 
   .menuIcon {
     @include menuIconMedia;
+    cursor: pointer;
   }
 }
 
@@ -240,11 +241,11 @@ $yellowColor: #ffcd32;
 
 @keyframes fadeIn {
   0% {
-    transform: translateX(15%);
+    transform: translateX(170px);
   }
 
   100% {
-    transform: translateY(0);
+    transform: translateX(0);
   }
 }
 
@@ -253,46 +254,52 @@ $yellowColor: #ffcd32;
   width: 100%;
   position: fixed;
   top: 0;
-  right: 0;
-  display: flex;
-  justify-content: flex-end;
   background-color: rgba(0, 0, 0, 0.2);
   z-index: 100;
   @include displayNone;
+}
 
-  .hiddenNavWrapper {
-    height: 100vh;
-    padding: 110px 0;
-    background-color: white;
-    border-left: 1.5px solid $yellowColor;
-    animation-name: fadeIn;
-    animation-duration: 1s;
-    @include hiddenNavListMedia;
+.hiddenNavWrapper {
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  padding: 110px 0 350px 0;
+  background-color: white;
+  border-left: 1.5px solid $yellowColor;
+  animation-name: fadeIn;
+  animation-duration: 0.7s;
+  z-index: 100;
 
-    .hiddenNavList {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 10px 0;
+  @include displayNone;
+  @include hiddenNavListMedia;
 
-      .hiddenMainLogo {
-        padding-bottom: 15px;
-        @include hiddenMainLogoMedia;
-      }
+  .hiddenNavList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 0;
 
-      .hiddenNavMenu {
-        margin-bottom: 5px;
-        height: 30px;
-        color: #525151;
-        font-size: 18px;
-        font-weight: 400;
-        cursor: pointer;
-        @include hiddenNavMenuMedia;
+    .hiddenMainLogo {
+      padding-bottom: 15px;
+      cursor: pointer;
+      @include hiddenMainLogoMedia;
+    }
 
-        &:hover {
-          bottom: -14px;
-          border-bottom: 5px solid $yellowColor;
-        }
+    .hiddenNavMenu {
+      margin-bottom: 5px;
+      height: 30px;
+      color: #525151;
+      font-size: 18px;
+      font-weight: 400;
+      cursor: pointer;
+      @include hiddenNavMenuMedia;
+
+      &:hover {
+        bottom: -14px;
+        border-bottom: 5px solid $yellowColor;
       }
     }
   }

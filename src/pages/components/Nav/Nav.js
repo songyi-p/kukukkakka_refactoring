@@ -182,28 +182,32 @@ function Nav() {
         onClick={() => {
           setMenuOpen(false);
         }}
+      />
+      <div
+        className={styles.hiddenNavWrapper}
+        style={{
+          display: menuOpen ? '' : 'none',
+        }}
       >
-        <div className={styles.hiddenNavWrapper}>
-          <ul className={styles.hiddenNavList}>
-            <img
-              className={styles.hiddenMainLogo}
-              alt="main-logo"
-              src={`${process.env.PUBLIC_URL}/img/main_logo.png`}
-            />
-            <li className={styles.hiddenNavMenu}>꽃 정기구독</li>
-            <Link
-              to="/list"
-              style={{ textDecoration: 'none' }}
-              onClick={goToTop}
-            >
-              <li className={styles.hiddenNavMenu}>꽃다발</li>
-            </Link>
-            <li className={styles.hiddenNavMenu}>당일배송</li>
-            <li className={styles.hiddenNavMenu}>플라워클래스</li>
-            <li className={styles.hiddenNavMenu}>소품샵</li>
-            <li className={styles.hiddenNavMenu}>이벤트</li>
-          </ul>
-        </div>
+        <ul className={styles.hiddenNavList}>
+          <img
+            className={styles.hiddenMainLogo}
+            alt="main-logo"
+            src={`${process.env.PUBLIC_URL}/img/main_logo.png`}
+            onClick={() => {
+              goToTop();
+              navigate('/');
+            }}
+          />
+          <li className={styles.hiddenNavMenu}>꽃 정기구독</li>
+          <Link to="/list" style={{ textDecoration: 'none' }} onClick={goToTop}>
+            <li className={styles.hiddenNavMenu}>꽃다발</li>
+          </Link>
+          <li className={styles.hiddenNavMenu}>당일배송</li>
+          <li className={styles.hiddenNavMenu}>플라워클래스</li>
+          <li className={styles.hiddenNavMenu}>소품샵</li>
+          <li className={styles.hiddenNavMenu}>이벤트</li>
+        </ul>
       </div>
     </>
   );
