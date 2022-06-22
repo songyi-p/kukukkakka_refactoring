@@ -79,6 +79,9 @@ function Nav() {
     token ? setIsLogIn(true) : setIsLogIn(false);
   }, []);
 
+  const why = '왜안돼?';
+  console.log(why);
+
   return (
     <>
       <div className={styles.allWrapper}>
