@@ -72,9 +72,8 @@ function Nav() {
       .then(res => res.json())
       .then(data => {
         setUserName(data.userName[0].username);
-        setCartUpdate(false);
       });
-  }, [navUpdate, isLogIn, cartUpdate]);
+  }, [navUpdate, isLogIn]);
 
   useEffect(() => {
     token ? setIsLogIn(true) : setIsLogIn(false);
@@ -175,14 +174,14 @@ function Nav() {
         </div>
       </nav>
 
-      <div className={styles.hiddenNavContainer}>
+      <div
+        className={styles.hiddenNavContainer}
+        style={{
+          display: menuOpen ? '' : 'none',
+        }}
+      >
         <div className={styles.hiddenNavWrapper}>
-          <ul
-            className={styles.hiddenNavList}
-            style={{
-              display: menuOpen ? '' : 'none',
-            }}
-          >
+          <ul className={styles.hiddenNavList}>
             <li className={styles.hiddenNavMenu}>꽃 정기구독</li>
             <Link
               to="/list"

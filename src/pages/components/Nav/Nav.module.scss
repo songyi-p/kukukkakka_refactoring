@@ -225,7 +225,7 @@ $yellowColor: #ffcd32;
 
 @keyframes fadeIn {
   0% {
-    transform: translateY(-15%);
+    transform: translateX(15%);
   }
 
   100% {
@@ -234,15 +234,19 @@ $yellowColor: #ffcd32;
 }
 
 .hiddenNavContainer {
-  position: sticky;
-  top: 70px;
-  display: flex;
-  justify-content: center;
-  background-color: white;
-  z-index: 1000;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: gainsboro;
+  z-index: 100;
 
   .hiddenNavWrapper {
-    @include hiddenNavListMedia;
+    height: 100vh;
+    width: 200px;
+    padding-top: 130px;
+    background-color: white;
 
     .hiddenNavList {
       display: flex;
