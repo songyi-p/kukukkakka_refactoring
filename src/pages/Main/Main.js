@@ -120,7 +120,7 @@ function Main() {
             </div>
             <div>
               <button type="button" className={styles.learn_more_subscription}>
-                정기구독 더 알아보기 커밋확인
+                정기구독 더 알아보기
               </button>
             </div>
           </section>
