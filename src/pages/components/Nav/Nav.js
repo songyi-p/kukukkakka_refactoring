@@ -16,32 +16,45 @@ function Nav() {
   const [userName, setUserName] = useState('');
   const [isLogIn, setIsLogIn] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [sideMenuAni, setSideMenuAni] = useState(true);
 
   const navigate = useNavigate();
 
+  //라우팅시 최상단으로 스크롤 이동
   const goToTop = () => {
     window.scrollTo(0, 0);
-    setMenuOpen(false);
+    setSideMenuAni(false);
   };
 
+  //스크롤값에 따른 Nav바 스타일 핸들링
   const changeNavbarColor = () => {
     window.scrollY > 65
       ? setBorderLine('1px solid #ffcd32')
       : setBorderLine('');
   };
-
   window.addEventListener('scroll', changeNavbarColor);
 
+  //장바구니 클릭시 로그인한 회원만 진입 가능
   const vaildLogin = () => {
     token
       ? navigate('/cart')
       : alert('장바구니는 로그인한 회원만 이용 가능합니다.');
   };
 
+  //태블릿 이하 사이즈에서 사이드 네브 메뉴 핸들링
   const clickMenu = () => {
-    menuOpen ? setMenuOpen(false) : setMenuOpen(true);
+    setMenuOpen(true);
+    setSideMenuAni(true);
   };
 
+  useEffect(() => {
+    sideMenuAni ||
+      setTimeout(() => {
+        setMenuOpen(false);
+      }, 600);
+  }, [sideMenuAni]);
+
+  //로그아웃
   const logOut = () => {
     alert('로그아웃 되었습니다.');
     localStorage.removeItem('token');
@@ -49,11 +62,12 @@ function Nav() {
     setIsLogIn(false);
   };
 
+  //로그인시 장바구니 수량 받아오는 API
   useEffect(() => {
     fetch('http://localhost:8000/carts', {
       headers: {
         'Content-Type': 'application/json',
-        token: token,
+        token,
       },
     })
       .then(res => res.json())
@@ -63,11 +77,12 @@ function Nav() {
       });
   }, [navUpdate, isLogIn, cartUpdate]);
 
+  //로그인시 유저 이름 받아오는 API
   useEffect(() => {
     fetch('http://localhost:8000/users/name', {
       headers: {
         'Content-Type': 'application/json',
-        token: token,
+        token,
       },
     })
       .then(res => res.json())
@@ -76,9 +91,10 @@ function Nav() {
       });
   }, [navUpdate, isLogIn]);
 
+  //새로고침시 값 유지를 위한 isLogIn 상태 관리
   useEffect(() => {
     token ? setIsLogIn(true) : setIsLogIn(false);
-  }, []);
+  }, [navUpdate]);
 
   return (
     <>
@@ -182,13 +198,16 @@ function Nav() {
         className={styles.hiddenNavContainer}
         style={{
           display: menuOpen ? '' : 'none',
+          backgroundColor: sideMenuAni ? `rgba(0, 0, 0, 0.2)` : 'transparent',
         }}
         onClick={() => {
-          setMenuOpen(false);
+          setSideMenuAni(false);
         }}
       />
       <div
-        className={styles.hiddenNavWrapper}
+        className={`${styles.hiddenNavWrapper} ${
+          sideMenuAni ? styles.fadeInAnimation : styles.fadeOutAnimation
+        }`}
         style={{
           display: menuOpen ? '' : 'none',
         }}

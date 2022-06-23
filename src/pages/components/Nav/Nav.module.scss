@@ -249,12 +249,21 @@ $yellowColor: #ffcd32;
   }
 }
 
+@keyframes fadeOut {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(170px);
+  }
+}
+
 .hiddenNavContainer {
   height: 100vh;
   width: 100%;
   position: fixed;
   top: 0;
-  background-color: rgba(0, 0, 0, 0.2);
   z-index: 100;
   @include displayNone;
 }
@@ -269,8 +278,6 @@ $yellowColor: #ffcd32;
   padding: 110px 0 350px 0;
   background-color: white;
   border-left: 1.5px solid $yellowColor;
-  animation-name: fadeIn;
-  animation-duration: 0.7s;
   z-index: 100;
 
   @include displayNone;
@@ -303,4 +310,14 @@ $yellowColor: #ffcd32;
       }
     }
   }
+}
+
+.fadeInAnimation {
+  animation-name: fadeIn;
+  animation-duration: 0.7s;
+}
+
+.fadeOutAnimation {
+  animation-name: fadeOut;
+  animation-duration: 0.7s;
 }
